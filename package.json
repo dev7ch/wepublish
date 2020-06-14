@@ -15,7 +15,7 @@
     "clean:api": "yarn workspace @wepublish/api clean",
     "build:api": "yarn workspace @wepublish/api build",
     "watch:api": "yarn workspace @wepublish/api watch",
-    "publish:api": "yarn workspace @wepublish/api publish --access public --no-git-tag-version",
+    "publish:api": "yarn workspace @dev7ch/wepublish-api publish --access public --no-git-tag-version",
     "clean:api-db-mongodb": "yarn workspace @wepublish/api-db-mongodb clean",
     "build:api-db-mongodb": "yarn workspace @wepublish/api-db-mongodb build",
     "watch:api-db-mongodb": "yarn workspace @wepublish/api-db-mongodb watch",
