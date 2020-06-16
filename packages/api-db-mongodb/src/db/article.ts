@@ -16,7 +16,7 @@ import {
   OptionalPublicArticle,
   GetPublishedArticlesArgs,
   PublicArticle
-} from '@wepublish/api'
+} from '@dev7ch/wepublish-api'
 
 import {Collection, Db, FilterQuery, MongoCountPreferences} from 'mongodb'
 

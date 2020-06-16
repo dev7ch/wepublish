@@ -16,7 +16,7 @@ import {
   GetPublishedPagesArgs,
   OptionalPublicPage,
   DBPageAdapter
-} from '@wepublish/api'
+} from '@dev7ch/wepublish-api'
 
 import {Collection, Db, FilterQuery, MongoCountPreferences} from 'mongodb'
 
