@@ -46,15 +46,7 @@ export enum RouteType {
   PeerEdit = 'peerEdit',
 
   TokenList = 'tokenList',
-  TokenGenerate = 'tokenGenerate',
-
-  UserList = 'userList',
-  UserEdit = 'userEdit',
-  UserCreate = 'userCreate',
-
-  UserRoleList = 'userRoleList',
-  UserRoleEdit = 'userRoleEdit',
-  UserRoleCreate = 'userRoleCreate'
+  TokenGenerate = 'tokenGenerate'
 }
 
 export const IndexRoute = route(RouteType.Index, routePath`/`)
@@ -97,17 +89,6 @@ export const PeerEditRoute = route(RouteType.PeerEdit, routePath`/peering/edit/$
 export const TokenListRoute = route(RouteType.TokenList, routePath`/tokens`)
 export const TokenGenerateRoute = route(RouteType.TokenGenerate, routePath`/tokens/generate`)
 
-export const UserListRoute = route(RouteType.UserList, routePath`/users`)
-export const UserEditRoute = route(RouteType.UserEdit, routePath`/user/edit/${required('id')}`)
-export const UserCreateRoute = route(RouteType.UserCreate, routePath`/user/create`)
-
-export const UserRoleListRoute = route(RouteType.UserRoleList, routePath`/userroles`)
-export const UserRoleEditRoute = route(
-  RouteType.UserRoleEdit,
-  routePath`/userrole/edit/${required('id')}`
-)
-export const UserRoleCreateRoute = route(RouteType.UserRoleCreate, routePath`/userrole/create`)
-
 export const NotFoundRoute = route(RouteType.NotFound, routePath`/${zeroOrMore('path')}`, null)
 
 export const routes = [
@@ -132,12 +113,6 @@ export const routes = [
   PeerEditRoute,
   TokenListRoute,
   TokenGenerateRoute,
-  UserListRoute,
-  UserEditRoute,
-  UserCreateRoute,
-  UserRoleListRoute,
-  UserRoleEditRoute,
-  UserRoleCreateRoute,
   NotFoundRoute
 ] as const
 

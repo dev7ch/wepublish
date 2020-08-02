@@ -15,7 +15,7 @@ import {UserInputError} from 'apollo-server-express'
 
 import {Context, Oauth2Provider} from '../context'
 
-import {GraphQLSession} from './session'
+import {GraphQLUser, GraphQLSession} from './session'
 import {GraphQLAuthProvider} from './auth'
 
 import {
@@ -45,7 +45,6 @@ import {
 } from './author'
 
 import {AuthorSort} from '../db/author'
-import {UserSort} from '../db/user'
 import {GraphQLNavigation, GraphQLPublicNavigation} from './navigation'
 import {GraphQLSlug} from './slug'
 
@@ -69,7 +68,6 @@ import {delegateToPeerSchema, base64Encode, base64Decode} from '../utility'
 
 import {
   authorise,
-  isAuthorised,
   CanGetArticle,
   CanGetArticles,
   CanGetAuthor,
@@ -79,11 +77,7 @@ import {
   CanGetNavigation,
   CanGetPage,
   CanGetPages,
-  CanGetPermissions,
-  CanGetUser,
-  CanGetUserRole,
-  CanGetUserRoles,
-  CanGetUsers,
+  isAuthorised,
   CanGetSharedArticle,
   CanGetPeerArticle,
   CanGetPeerArticles,
@@ -91,18 +85,8 @@ import {
   CanGetSharedArticles,
   CanGetPeerProfile,
   CanGetPeers,
-  CanGetPeer,
-  AllPermissions
+  CanGetPeer
 } from './permissions'
-import {GraphQLUserConnection, GraphQLUserFilter, GraphQLUserSort, GraphQLUser} from './user'
-import {
-  GraphQLPermission,
-  GraphQLUserRole,
-  GraphQLUserRoleConnection,
-  GraphQLUserRoleFilter,
-  GraphQLUserRoleSort
-} from './userRole'
-import {UserRoleSort} from '../db/userRole'
 
 import {NotAuthorisedError} from '../error'
 
@@ -196,103 +180,6 @@ export const GraphQLQuery = new GraphQLObjectType<undefined, Context>({
             url
           }
         })
-      }
-    },
-
-    // Users
-    // ==========
-    user: {
-      type: GraphQLUser,
-      args: {id: {type: GraphQLID}},
-      resolve(root, {id}, {authenticate, dbAdapter}) {
-        const {roles} = authenticate()
-        authorise(CanGetUser, roles)
-
-        if (id == null) {
-          throw new UserInputError('You must provide `id`')
-        }
-        return dbAdapter.user.getUserByID(id)
-      }
-    },
-
-    users: {
-      type: GraphQLNonNull(GraphQLUserConnection),
-      args: {
-        after: {type: GraphQLID},
-        before: {type: GraphQLID},
-        first: {type: GraphQLInt},
-        last: {type: GraphQLInt},
-        filter: {type: GraphQLUserFilter},
-        sort: {type: GraphQLUserSort, defaultValue: UserSort.ModifiedAt},
-        order: {type: GraphQLSortOrder, defaultValue: SortOrder.Descending}
-      },
-      resolve(root, {filter, sort, order, after, before, first, last}, {authenticate, dbAdapter}) {
-        const {roles} = authenticate()
-        authorise(CanGetUsers, roles)
-
-        return dbAdapter.user.getUsers({
-          filter,
-          sort,
-          order,
-          cursor: InputCursor(after, before),
-          limit: Limit(first, last)
-        })
-      }
-    },
-
-    // UserRole
-    // ========
-
-    userRole: {
-      type: GraphQLUserRole,
-      args: {id: {type: GraphQLID}},
-      resolve(root, {id}, {authenticate, dbAdapter}) {
-        const {roles} = authenticate()
-        authorise(CanGetUserRole, roles)
-
-        if (id == null) {
-          throw new UserInputError('You must provide `id`')
-        }
-        return dbAdapter.userRole.getUserRoleByID(id)
-      }
-    },
-
-    userRoles: {
-      type: GraphQLNonNull(GraphQLUserRoleConnection),
-      args: {
-        after: {type: GraphQLID},
-        before: {type: GraphQLID},
-        first: {type: GraphQLInt},
-        last: {type: GraphQLInt},
-        filter: {type: GraphQLUserRoleFilter},
-        sort: {type: GraphQLUserRoleSort, defaultValue: UserRoleSort.ModifiedAt},
-        order: {type: GraphQLSortOrder, defaultValue: SortOrder.Descending}
-      },
-      resolve(root, {filter, sort, order, after, before, first, last}, {authenticate, dbAdapter}) {
-        const {roles} = authenticate()
-        authorise(CanGetUserRoles, roles)
-
-        return dbAdapter.userRole.getUserRoles({
-          filter,
-          sort,
-          order,
-          cursor: InputCursor(after, before),
-          limit: Limit(first, last)
-        })
-      }
-    },
-
-    // Permissions
-    // ========
-
-    permissions: {
-      type: GraphQLList(GraphQLNonNull(GraphQLPermission)),
-      args: {},
-      resolve(root, {}, {authenticate}) {
-        const {roles} = authenticate()
-        authorise(CanGetPermissions, roles)
-
-        return AllPermissions.map(permission => ({...permission, checked: false}))
       }
     },
 
