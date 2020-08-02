@@ -13,7 +13,7 @@ import {
   bool,
   recursion
 } from '@karma.run/sdk/model'
-import {VersionState, BlockType} from '@wepublish/api'
+import {VersionState, BlockType} from '@dev7ch/wepublish-api'
 
 export enum ModelTag {
   Meta = 'meta',

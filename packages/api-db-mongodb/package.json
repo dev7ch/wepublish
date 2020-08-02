@@ -1,6 +1,6 @@
 {
-  "name": "@wepublish/api-db-mongodb",
-  "version": "0.7.0",
+  "name": "@dev7ch/wepublish-api-db-mongodb",
+  "version": "0.8.4",
   "main": "./lib/",
   "license": "MIT",
   "scripts": {
@@ -28,6 +28,6 @@
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
-    "@wepublish/api": "*"
+    "@dev7ch/wepublish-api": "*"
   }
 }

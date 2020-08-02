@@ -1,4 +1,10 @@
-import {ArticleBlock, FocalPoint, NavigationLink, PageBlock, RichTextNode} from '@wepublish/api'
+import {
+  ArticleBlock,
+  FocalPoint,
+  NavigationLink,
+  PageBlock,
+  RichTextNode
+} from '@dev7ch/wepublish-api'
 
 export enum CollectionName {
   Migrations = 'migrations',

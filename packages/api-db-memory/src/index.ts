@@ -21,7 +21,7 @@ import {
   Author,
   PageInfo,
   Pagination
-} from '@wepublish/api'
+} from '@dev7ch/wepublish-api'
 
 type Writeable<T> = {-readonly [P in keyof T]: T[P]}
 

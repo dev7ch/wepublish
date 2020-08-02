@@ -6,7 +6,7 @@ import {
   User,
   OptionalUser,
   GetUserForCredentialsArgs
-} from '@wepublish/api'
+} from '@dev7ch/wepublish-api'
 
 import {Collection, Db, MongoError} from 'mongodb'
 

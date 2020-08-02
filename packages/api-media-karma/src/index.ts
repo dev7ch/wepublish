@@ -1,4 +1,4 @@
-import {MediaAdapter, Image, UploadImage, ImageTransformation} from '@wepublish/api'
+import {MediaAdapter, Image, UploadImage, ImageTransformation} from '@dev7ch/wepublish-api'
 import {FileUpload} from 'graphql-upload'
 import fetch from 'node-fetch'
 import FormData from 'form-data'

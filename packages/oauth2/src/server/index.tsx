@@ -7,7 +7,7 @@ import {MongoDBAdapter as OAuth2DBAdapter} from './adapter'
 import {routes} from './routes'
 import {configuration} from './configuration'
 import url from 'url'
-import {MongoDBAdapter as WepublishDBAdapter} from '@wepublish/api-db-mongodb'
+import {MongoDBAdapter as WepublishDBAdapter} from '@dev7ch/wepublish-api-db-mongodb'
 import set from 'lodash/set'
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 4100
