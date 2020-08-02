@@ -94,13 +94,7 @@ export async function asyncMain() {
 
   app.get('/*', async (req, res) => {
     const url = `${req.protocol}://${req.headers.host}${req.originalUrl}`
-    let introspectionQueryResultData
-    try {
-      introspectionQueryResultData = await fetchIntrospectionQueryResultData(apiURL)
-    } catch (err) {
-      console.warn('Fetch Introspect Error', err)
-    }
-
+    const introspectionQueryResultData = await fetchIntrospectionQueryResultData(apiURL)
     const initialRoute = matchRoute(url)
 
     const {markup, error} = await renderMarkup({
