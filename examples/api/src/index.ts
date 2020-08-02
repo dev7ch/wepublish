@@ -60,21 +60,17 @@ async function asyncMain() {
       const editorUserRoleId = editorUserRole ? editorUserRole.id : 'fake'
 
       adapter.user.createUser({
-        input: {
-          email: 'dev@wepublish.ch',
-          name: 'Dev User',
-          roleIDs: [adminUserRoleId]
-        },
-        password: '123'
+        email: 'dev@wepublish.ch',
+        password: '123',
+        name: 'Dev User',
+        roleIDs: [adminUserRoleId]
       })
 
       adapter.user.createUser({
-        input: {
-          email: 'editor@wepublish.ch',
-          name: 'Editor User',
-          roleIDs: [editorUserRoleId]
-        },
-        password: '123'
+        email: 'editor@wepublish.ch',
+        password: '123',
+        name: 'Editor User',
+        roleIDs: [editorUserRoleId]
       })
     }
   })
