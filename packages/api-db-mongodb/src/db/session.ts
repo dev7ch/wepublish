@@ -5,7 +5,7 @@ import {
   SessionType,
   UserSession,
   DBSessionAdapter
-} from '@wepublish/api'
+} from '@dev7ch/wepublish-api'
 
 import {Collection, Db} from 'mongodb'
 

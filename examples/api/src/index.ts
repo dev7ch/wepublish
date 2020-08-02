@@ -6,10 +6,10 @@ import {
   PublicPage,
   Author,
   Oauth2Provider
-} from '@wepublish/api'
+} from '@dev7ch/wepublish-api'
 
 import {KarmaMediaAdapter} from '@wepublish/api-media-karma'
-import {MongoDBAdapter} from '@wepublish/api-db-mongodb'
+import {MongoDBAdapter} from '@dev7ch/wepublish-api-db-mongodb'
 
 import {URL} from 'url'
 

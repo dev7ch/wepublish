@@ -1,4 +1,9 @@
-import {DBUserRoleAdapter, CreateUserRoleArgs, OptionalUserRole, UserRole} from '@wepublish/api'
+import {
+  DBUserRoleAdapter,
+  CreateUserRoleArgs,
+  OptionalUserRole,
+  UserRole
+} from '@dev7ch/wepublish-api'
 
 import {Collection, Db} from 'mongodb'
 
